@@ -1,0 +1,6 @@
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+project_root_markers = [".git", "AGENTS.md"]
+
+[sandbox_workspace_write]
+network_access = true

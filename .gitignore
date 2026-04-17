@@ -1,0 +1,15 @@
+CLAUDE.local.md
+.claude/logs/
+__pycache__/
+*.pyc
+*.pyo
+.codex/auth.json
+.tmp_install/
+.migration_archive/
+.vscode/
+logs/
+runs/
+runs_32/
+runs_40/
+compare_seedmix/
+compare_stage13*/
