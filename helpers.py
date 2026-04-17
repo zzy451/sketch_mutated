@@ -1658,7 +1658,9 @@ def _seed_spec_allowed_for_state(spec, state, cfg=None):
     if not errs:
         return True, "seed_state_skip"
     best_err = max(1.0, min(errs))
-    err_cap = _seed_candidate_error_cap(best_err, cfg)
+    rel_mult = float(cfg.get("llm_seed_keep_err_rel_mult", 8.0))
+    abs_cap = float(cfg.get("llm_seed_keep_abs_err_cap", 2.0e6))
+    err_cap = float(min(abs_cap, best_err * rel_mult))
     spec_err = float((spec or {}).get("err", 1e18) or 1e18)
     if spec_err > err_cap:
         return False, f"seed_inject_err_cap:{spec_err:.2f}>{err_cap:.2f}"
